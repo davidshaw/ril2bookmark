@@ -1,6 +1,9 @@
 #!/bin/bash
-# converts Pocket/Read It Later HTML Export to Chrome/Netscape bookmark
+# @author:	dshaw@dshaw.net
+# @date:		June 9, 2012
+# @desc:		converts Pocket/Read It Later HTML Export to Chrome/Netscape bookmark
 
+# usage notes
 if [[ $# -ne 1 ]]; then
 	echo "ril2chrome.sh usage:";
 	echo -e "\t./ril2chome.sh <ril export file>";
@@ -10,6 +13,7 @@ fi
 # seconds since epoch (for chrome format bookmarks)
 date=$(date +%s);
 
+# beginning format of bookmark format
 echo -n '<!DOCTYPE NETSCAPE-Bookmark-file-1>
 <!-- This is an automatically generated file.
      It will be read and overwritten.
@@ -23,13 +27,10 @@ echo -n $date;
 echo '" PERSONAL_TOOLBAR_FOLDER="true">ReadItLater</H3>
    <DL><p>';
 
-# change format
+# change format - regex ftw :)
 cat $1 | grep li | sed 's/.*href="\(.*\)" time.*">\(.*\)<\/a>.*/<DT><A HREF="\1">\2<\/A>/g'
 
 echo '   </DL><p>';
 echo '</DL><p>'
 
-# <DT><A HREF="http://www.google.com/" ADD_DATE="$date">Title</A>
-# ... n ...
-# \t</DT><p>
-# </DL><p>
+# done!
