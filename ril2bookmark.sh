@@ -1,7 +1,7 @@
 #!/bin/bash
-# @author:	dshaw@dshaw.net
-# @date:		June 9, 2012
-# @desc:		converts Pocket/Read It Later HTML Export to Chrome/Netscape bookmark
+# @author: dshaw@dshaw.net
+# @date:   June 9, 2012
+# @desc:   Converts Pocket/Read It Later HTML Export to Chrome/Netscape bookmark
 
 # usage notes
 if [[ $# -ne 1 ]]; then
